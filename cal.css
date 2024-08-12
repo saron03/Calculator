@@ -1,3 +1,75 @@
 *{
-    background-color: darkslategrey;
+    background-color:gainsboro;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+margin: 0;
+padding: 0;
+display: flex;
+flex-direction: column;
+gap: 90px;
+justify-content: center;
+align-items: center;
+height : 100vh;
+}
+
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 45px;
+    color: white;
+    text-shadow: 2px 2px 4px #003300;
+    background: linear-gradient(145deg, darkslategray,darkslategray);
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0; 
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    border: 13px solid darkslategray;
+    border-radius: 5px;
+    height: 60%;
+    width:23%;
+    min-width: 390px;
+    max-width: 400px;
+}
+
+.display{
+    background-color:lightcyan;
+    height: 20%;
+    border: 5px solid black;
+}
+
+.btns{
+    background-color:lightcyan;
+    border: 5px solid black;
+    height: 80%;
+    display: flex;
+    gap: 0;
+}
+
+.nums{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+}
+.operators{
+    display: flex;
+    flex-direction: column;
+}
+
+.box{
+    height:70px;
+    width:93px;
+    margin: 1px;
+    background-color: darkcyan;
+    border-radius: 5px;
+    font-size: 25px;
+    font-weight: bold;
 }

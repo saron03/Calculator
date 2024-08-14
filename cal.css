@@ -1,18 +1,18 @@
 *{
-    background-color:gainsboro;
+    background-color:darkcyan;
     margin: 0;
     padding: 0;
 }
 
 body{
-margin: 0;
-padding: 0;
-display: flex;
-flex-direction: column;
-gap: 90px;
-justify-content: center;
-align-items: center;
-height : 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+    height : 100vh;
 }
 
 h1{
@@ -24,7 +24,7 @@ h1{
     background: linear-gradient(145deg, darkslategray,darkslategray);
     padding: 15px;
     border-radius: 5px;
-    margin: 20px 0; 
+    margin: 10px 0; 
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
@@ -40,13 +40,15 @@ h1{
 }
 
 .display{
-    background-color:lightcyan;
+    background-color: black;
     height: 20%;
-    border: 5px solid black;
+    border: 5px black;
+    display: flex; 
+    justify-content: end;
+    align-items: center;
 }
 
 .btns{
-    background-color:lightcyan;
     border: 5px solid black;
     height: 80%;
     display: flex;
@@ -54,6 +56,7 @@ h1{
 }
 
 .nums{
+    background-color: black;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -62,14 +65,26 @@ h1{
 .operators{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    background-color: black;
+    padding-bottom: 2px;
 }
 
 .box{
     height:70px;
     width:93px;
     margin: 1px;
-    background-color: darkcyan;
     border-radius: 5px;
     font-size: 25px;
     font-weight: bold;
+}
+
+
+.text{
+    margin-right: 5px;
+    color: white; 
+    font-size: 60px; 
+    font-weight: bold;
+    background-color: transparent;
+    padding: 5px;
 }

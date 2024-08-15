@@ -2,8 +2,6 @@
  const nums = document.querySelector(".nums");
  const operators = document.querySelector(".operators");
 
- const box = document.createElement('button');
-
  const arr = ["AC", "+/-", "%"];
  const arr2 =[7,8,9,4,5,6,1,2,3,0,"."]
  const arr3 = ["/","x","-","+","="];
@@ -54,6 +52,7 @@
     box.addEventListener("click", function () {
         let originalColor = box.style.backgroundColor;
         let lightColor;
+
         if (originalColor === 'lightblue') {
             lightColor = 'white'; 
         } else if (originalColor === 'grey') {
@@ -63,12 +62,14 @@
         }
         
         box.style.backgroundColor = lightColor;
-        
         setTimeout(() => {
             box.style.backgroundColor = originalColor;
-        }, 250);
+        }, 100);
     });
 });
+
+
+
 let num1 = '';
 let num2 ='';
 let operand='';
@@ -131,11 +132,11 @@ document.querySelectorAll('.box').forEach(box => {
                 text.textContent = num2;
             }
         }
-        else if(['+', '-', 'x', '/', '%'].includes(value)){
+        else if(['+', '-', 'x', '/'].includes(value)){
             if(!oper){
                 operand = value;
                 oper = true;
-                newCal = false;
+                newCal = false;////
             }
             else{
                 operate(Number(num1), Number(num2), operand);
@@ -151,6 +152,15 @@ document.querySelectorAll('.box').forEach(box => {
             operand = "";
             oper = false;
             text.textContent = 0;
+        }
+        else if (value === "%") {
+            if (!oper) {
+                num1 = String(Number(num1) / 100);
+                text.textContent = num1;
+            } else {
+                num2 = String(Number(num2) / 100);
+                text.textContent = num2;
+            }
         }
         else if(value === "="){
             operate(Number(num1), Number(num2),operand);
@@ -178,9 +188,6 @@ function operate(num1,num2,operand){
      }
      else if(operand === "-"){
         result = subtract(num1,num2);
-     }
-     else if(operand === "%"){
-        result =  num1 / 100;
      }
      else{
         result = "Error";
@@ -210,8 +217,98 @@ function divide(num1, num2) {
     }
 }
 
-/*
--Keyboard support
--light color wehn clicked stay longer
--the display when too much number is entered
--submitt */
+
+document.addEventListener('keydown', function(event) {
+    let key = event.key;
+
+    if (key >= '0' && key <= '9' || key === '.') {
+        handleNumber(key);
+    }
+    else if (['+', '-', '*', '/'].includes(key)) {
+        handleOperator(key);
+    }
+
+    else if (key === '%') {
+        handlePercentage();
+    }
+    else if (key === 'Enter') {
+        handleEqual();
+    }
+    else if (key === 'Escape') {
+        handleAC();
+    }
+});
+
+function handleNumber(key) {
+    if (newCal) {
+        num1 = '';
+        num2 = '';
+        operand = '';
+        newCal = false;
+    }
+    if (!oper) {
+        if (key === '.') {
+            if (!num1.includes(".")) {
+                num1 += key;
+                text.textContent = num1;
+            }
+        } else {
+            num1 += key;
+            text.textContent = num1;
+        }
+    } else {
+        if (key === '.') {
+            if (!num2.includes(".")) {
+                num2 += key;
+                text.textContent = num2;
+            }
+        } else {
+            num2 += key;
+            text.textContent = num2;
+        }
+    }
+}
+
+function handleOperator(key) {
+    let operator = key;
+    if (operator === '*') operator = 'x'; 
+
+    if (!oper) {
+        operand = operator;
+        oper = true;
+        newCal = false;
+    } else {
+        operate(Number(num1), Number(num2), operand);
+        num1 = result;
+        num2 = '';
+        operand = operator;
+        text.textContent = num1;
+    }
+}
+
+function handlePercentage() {
+    if (!oper) {
+        num1 = String(Number(num1) / 100);
+        text.textContent = num1;
+    } else {
+        num2 = String(Number(num2) / 100);
+        text.textContent = num2;
+    }
+}
+
+function handleEqual() {
+    operate(Number(num1), Number(num2), operand);
+    num1 = result;
+    num2 = '';
+    operand = '';
+    oper = false;
+    newCal = true;
+}
+
+function handleAC() {
+    num1 = '';
+    num2 = '';
+    operand = '';
+    oper = false;
+    text.textContent = 0;
+}

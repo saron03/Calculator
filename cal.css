@@ -1,5 +1,5 @@
 *{
-    background-color:darkcyan;
+    background-color:cadetblue;
     margin: 0;
     padding: 0;
 }
@@ -9,7 +9,7 @@ body{
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
     justify-content: center;
     align-items: center;
     height : 100%;
@@ -23,7 +23,7 @@ h1{
     background: linear-gradient(145deg, darkslategray,darkslategray);
     padding: 15px;
     border-radius: 27px;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
     margin-top: 15px;
     text-align: center;
     box-shadow: 0 7px 5px rgba(0, 0, 0, 0.3);
@@ -100,7 +100,6 @@ h1{
     width: 100%;
     padding-left: 50px; 
     padding-right: 50px;
-    padding-bottom: 10px;
 }
 .top{
     font-weight: bold;
